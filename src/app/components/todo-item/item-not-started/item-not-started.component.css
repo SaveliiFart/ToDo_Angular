@@ -1,0 +1,5 @@
+@import "../todo-item.style.css";
+
+.item {
+    background-color: rgba(53,56,62,0.2);
+}

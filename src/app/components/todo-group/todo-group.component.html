@@ -1,0 +1,39 @@
+<div class="group">
+    <div class="group__title">
+        <div class="group__title-name">
+            @if (isShowTitle === true) {
+            <h2>{{ todoGroup.title }}</h2>
+            <button (click)="isShowTitle = false" class="button">Edit</button>
+            <button (click)="deleteGroupEvent()" class="button">Delete</button>
+            } @else {
+            <input type="text" class="input" [(ngModel)]="groupTitle" (blur)="onEnterValue()"
+                (keyup.enter)="onEnterValue()" placeholder="Enter group name...">
+            }
+        </div>
+        <div class="group__title-underline"></div>
+    </div>
+    <div class="group__items">
+
+        @for (item of todoGroup.items; track $index) {
+            @switch(item.status) {
+                @case('not_started') {
+                    <app-item-not-started (deleteItem)="handleDeleteItem($event)" (changeStatus)="handleChangeStatus($event)" (eventChangeDescription)="handleChangeItemDescription($event)" [index]="$index" [todoItem]="item"></app-item-not-started>
+                }
+                @case('in_progress') {
+                    <app-item-in-progress (deleteItem)="handleDeleteItem($event)" (changeStatus)="handleChangeStatus($event)" (eventChangeDescription)="handleChangeItemDescription($event)" [index]="$index" [todoItem]="item"></app-item-in-progress>
+                }
+                @case('done') {
+                    <app-item-done (deleteItem)="handleDeleteItem($event)" (changeStatus)="handleChangeStatus($event)" (eventChangeDescription)="handleChangeItemDescription($event)" [index]="$index" [todoItem]="item"></app-item-done>
+                }
+            }
+        }
+        <!-- <ng-container *ngFor="let item of todoGroup.items; let i = index;">
+            <ng-container [ngSwitch]="item.status">
+                <app-item-not-started [index] ="i" [todoItem]="item" *ngSwitchCase="'not_started'"></app-item-not-started>
+                <app-item-in-progress [index] ="i" [todoItem]="item" *ngSwitchCase="'in_progress'"></app-item-in-progress>
+                <app-item-done [index] ="i" [todoItem]="item" *ngSwitchCase="'done'"></app-item-done>
+            </ng-container>
+        </ng-container> -->
+        <input type="text" placeholder="Enter ToDo name..." class="input" #newToDo (keyup.enter)="addNewToDo(newToDo.value); newToDo.value = ''">
+    </div>
+</div>

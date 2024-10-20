@@ -1,0 +1,41 @@
+.group {
+    margin: 50px auto;
+    width: 35vw;
+    padding: 20px;
+    border-radius: 10px;
+    background-color: rgb(255, 255, 255);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    transition: 0.3s;
+}
+
+.group:hover {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.group__title {
+    text-align: center;
+    margin: 0;
+}
+
+.group__title-underline{
+    width: 100%;
+    height: 1px;
+    background-color: rgb(159, 155, 155);
+    margin-bottom: 20px;
+}
+
+.group__title-name{
+    display: flex;
+    gap: 15px;
+    justify-content: center;
+    align-items: center;
+    line-height: 100%;
+}
+
+.group__items {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    justify-content: center;
+    align-items: center;
+}

@@ -1,0 +1,14 @@
+<header>
+  <h1 style="text-align: center;">ToDo</h1>
+</header>
+
+<main class="main">
+  <div class="main__controls">
+    <button (click)="addGroup()" class="button">Add Group</button>
+  </div>
+
+
+  <!-- [index]="i" [todoGroup]="group" This is how the value is thrown into the component-->
+  <app-todo-group (deleteItem)="handleDeleteToDo($event)" (changeItemStatus)="handleChangeItemStatus($event)" (changeDescription)="handleChangeItemDescription($event)" (deleteGroup)="handleDeleteGroup($event)" (changeTitleEvent)="handleChangeTitle($event)" [index]="i"
+    [todoGroup]="group" *ngFor="let group of todoGroups; let i = index;" (addNewItem)="handleNewItem($event)"></app-todo-group>
+</main>
